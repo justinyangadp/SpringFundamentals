@@ -11,12 +11,13 @@ import com.example.domain.Purchase;
 
 // TODO-04: Annotate to this class to define it as a Spring bean.
 // Select the most descriptive stereotype annotation.
-
+@Repository
 public class PurchaseDaoImpl implements PurchaseDao {
 
 	// TODO-05: Have Spring inject the JdbcClient into this class.
 	// Use whatever injection technique you like (constructor, setter, field).
-	private JdbcClient jdbcClient;
+	@Autowired
+	JdbcClient jdbcClient;
 
 	//	TODO-06:  Modify the getAllPurchases() method below.
 	//	Use the jdbcClient to retrieve purchases from the DB:
@@ -28,8 +29,10 @@ public class PurchaseDaoImpl implements PurchaseDao {
 	@Override
 	public List<Purchase> getAllPurchases() {
 		String sql = "SELECT * FROM PURCHASE";
-		// Replace this statement with the call to jdbcClient.
-		return null;
+		return jdbcClient
+			.sql(sql)
+			.query(Purchase.class)
+			.list();
 	}
 
 	//	TODO-07: Modify the getPurchase() method below.
@@ -43,8 +46,11 @@ public class PurchaseDaoImpl implements PurchaseDao {
 	@Override
 	public Purchase getPurchase(int id) {
 		String sql = "SELECT * FROM PURCHASE WHERE ID = ?";
-		// Add code here
-		return null;
+		return jdbcClient
+			.sql(sql)
+			.param(id)
+			.query(Purchase.class)
+			.single();
 	}
 
 	//	TODO-08:  Modify the savePurchase() method below.
@@ -56,6 +62,12 @@ public class PurchaseDaoImpl implements PurchaseDao {
 	@Override
 	public void savePurchase(Purchase purchase) {
 		String sql = "insert into PURCHASE (CUSTOMERNAME, PRODUCT, PURCHASEDATE) values(?,?,?)";
+		jdbcClient
+			.sql(sql)
+			.param(purchase.getCustomerName())
+			.param(purchase.getProduct())
+			.param(purchase.getPurchaseDate())
+			.update();
 	}
 
 

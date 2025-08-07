@@ -11,13 +11,13 @@ import com.example.domain.Purchase;
 
 // TODO-09: Annotate to this class to define it as a Spring bean.
 // Select the most descriptive stereotype annotation.
-
+@Service
 public class PurchaseServiceImpl implements PurchaseService {
 
 	// TODO-10: Have Spring inject the PurchaseDao into this class.
 	// Use whatever injection technique you like (constructor, setter, field).
-
-	private PurchaseDao purchaseDAO;
+	@Autowired
+	PurchaseDao purchaseDAO;
 
 
 	public void savePurchase(Purchase purchase) {

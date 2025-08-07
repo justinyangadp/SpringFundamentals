@@ -5,17 +5,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Date;
 import java.util.List;
 
+import com.example.Config;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import com.example.domain.Purchase;
 
 //	TODO-11: Annotate this class to make it a Spring test class.
 //  Include the configuration class you wish to load.
-
+@SpringJUnitConfig(Config.class)
 public class PurchaseDaoImplTests {
 
     // TODO-12: Have Spring inject a PurchaseDao into this class.
+    @Autowired
     PurchaseDao dao;
     
     //  TODO-13: Examine the test logic in the following method.
@@ -23,8 +27,8 @@ public class PurchaseDaoImplTests {
     //  It also asserts that the first purchase has its properties mapped;
     //  This verifies that the BeanPropertyRowMapper is working.
     //  Remove the @Disabled annotation.  Run this test, it should pass.
+    //  It did
     @Test
-    @Disabled
     public void	findAllPurchases() {
         List<Purchase> purchases = dao.getAllPurchases();
 
@@ -46,7 +50,13 @@ public class PurchaseDaoImplTests {
     //  Use the previous test method for guidance. 
     @Test
     public void	getPurchase() {
+        Purchase p = dao.getPurchase(2);
 
+        assertThat(p).isNotNull();
+        assertThat(p.getId()).isNotNull();
+        assertThat(p.getCustomerName()).isNotNull();
+        assertThat(p.getCustomerName()).isEqualTo("Paul");
+        assertThat(p.getProduct()).isEqualTo("Football");
     }
 
     //  TODO-15: Implement the savePurchase() test method.
@@ -60,6 +70,15 @@ public class PurchaseDaoImplTests {
         p.setCustomerName("Sample");
         p.setProduct("Sample Product");
         p.setPurchaseDate( new Date());
+
+        dao.savePurchase(p);
+        Purchase newPurchase = dao.getPurchase(p.getCustomerName(),p.getPurchaseDate());
+
+        assertThat(newPurchase).isNotNull();
+        assertThat(newPurchase.getId()).isNotNull();
+        assertThat(newPurchase.getCustomerName()).isNotNull();
+        assertThat(newPurchase.getCustomerName()).isEqualTo(p.getCustomerName());
+        assertThat(newPurchase.getProduct()).isEqualTo(p.getProduct());
 
     }
     //  TODO-16: Organize your imports, save your work
