@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.dao.PurchaseDaoImplTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-08-07T19:36:14" hostname="LABPC" time="1.388">
+  <properties/>
+  <testcase name="findAllPurchases()" classname="com.example.dao.PurchaseDaoImplTests" time="1.35"/>
+  <testcase name="getPurchase()" classname="com.example.dao.PurchaseDaoImplTests" time="0.017"/>
+  <testcase name="savePurchase()" classname="com.example.dao.PurchaseDaoImplTests" time="0.012"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Aug 07, 2025 3:36:14 PM org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory initDatabase
+INFO: Starting embedded database: url='jdbc:hsqldb:mem:testdb', username='sa'
+WARNING: A Java agent has been loaded dynamically (C:\Users\labadmin\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.14.9\dfb8707031008535048bad2b69735f46d0b6c5e5\byte-buddy-agent-1.14.9.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
