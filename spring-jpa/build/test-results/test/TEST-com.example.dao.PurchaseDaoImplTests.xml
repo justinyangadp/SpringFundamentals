@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.dao.PurchaseDaoImplTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-08-08T15:36:42" hostname="LABPC" time="1.712">
+  <properties/>
+  <testcase name="findAllPurchases()" classname="com.example.dao.PurchaseDaoImplTests" time="1.712"/>
+  <system-out><![CDATA[Hibernate: 
+    /* SELECT
+        p 
+    FROM
+        Purchase p */ select
+            p1_0.id,
+            p1_0.customer_id,
+            p1_0.product,
+            p1_0.PURCHASE_DATE 
+        from
+            PURCHASES p1_0
+Hibernate: 
+    select
+        c1_0.id,
+        c1_0.email,
+        c1_0.CUSTOMER_NAME 
+    from
+        CUSTOMERS c1_0 
+    where
+        c1_0.id=?
+Hibernate: 
+    select
+        c1_0.id,
+        c1_0.email,
+        c1_0.CUSTOMER_NAME 
+    from
+        CUSTOMERS c1_0 
+    where
+        c1_0.id=?
+Hibernate: 
+    select
+        c1_0.id,
+        c1_0.email,
+        c1_0.CUSTOMER_NAME 
+    from
+        CUSTOMERS c1_0 
+    where
+        c1_0.id=?
+]]></system-out>
+  <system-err><![CDATA[Aug 08, 2025 11:36:39 AM org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory initDatabase
+INFO: Starting embedded database: url='jdbc:hsqldb:mem:testdb', username='sa'
+Aug 08, 2025 11:36:39 AM org.hibernate.jpa.internal.util.LogHelper logPersistenceUnitInformation
+INFO: HHH000204: Processing PersistenceUnitInfo [name: default]
+Aug 08, 2025 11:36:39 AM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate ORM core version 6.4.4.Final
+Aug 08, 2025 11:36:39 AM org.hibernate.cache.internal.RegionFactoryInitiator initiateService
+INFO: HHH000026: Second-level cache disabled
+Aug 08, 2025 11:36:40 AM org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo addTransformer
+INFO: No LoadTimeWeaver setup: ignoring JPA class transformer
+Aug 08, 2025 11:36:42 AM org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator initiateService
+INFO: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Aug 08, 2025 11:36:42 AM org.springframework.orm.jpa.AbstractEntityManagerFactoryBean buildNativeEntityManagerFactory
+INFO: Initialized JPA EntityManagerFactory for persistence unit 'default'
+WARNING: A Java agent has been loaded dynamically (C:\Users\labadmin\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.14.4\3bf5ac1104554908cc623e40e58a00be37c35f36\byte-buddy-agent-1.14.4.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
